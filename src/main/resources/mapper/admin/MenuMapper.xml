@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xxx.xcx01.web.mapper.admin.MenuMapper">
+
+    <resultMap id="userRoleMenuMap" type="com.xxx.xcx01.web.vo.UserRoleMenuVO">
+        <id column="id" property="id" />
+        <result column="username" property="username"/>
+        <result column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+        <result column="menu_id" property="menuId"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_type" property="menuType"/>
+        <result column="auth_url" property="authUrl"/>
+        <result column="pid" property="pid"/>
+    </resultMap>
+
+    <resultMap id="menuMap" type="com.xxx.xcx01.web.entity.admin.MenuEntity">
+        <id column="id" property="id" />
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_type" property="menuType"/>
+        <result column="auth_url" property="authUrl"/>
+        <result column="pid" property="pid"/>
+        <result column="authority" property="authority"/>
+        <result column="sort" property="sort"/>
+        <result column="icon" property="icon"/>
+    </resultMap>
+
+    <select id="selectMenuByUserId" resultMap="menuMap">
+        SELECT
+            tm.id ,
+            tm.menu_name ,
+            tm.menu_type ,
+            tm.auth_url ,
+            tm.pid,
+            tm.authority,
+            tm.sort,
+            tm.icon
+        from
+            t_user tu
+        left join t_user_role tur on tu.id = tur.user_id
+        left join t_role tr on tur.role_id = tr.id
+        left join t_role_menu trm on tr.id = trm.role_id
+        left join t_menu tm on trm.menu_id = tm.id
+        where tu.id = #{userId}
+    </select>
+
+
+
+</mapper>
