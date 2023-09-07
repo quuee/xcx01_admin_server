@@ -1,15 +1,16 @@
 package com.xxx.xcx01.support.authentication;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.shaded.gson.internal.LinkedTreeMap;
 import com.xxx.xcx01.support.exception.ErrorCode;
 import com.xxx.xcx01.support.exception.ServerException;
 import com.xxx.xcx01.support.util.JWTUtil;
-import com.xxx.xcx01.support.util.PayloadDTO;
 import com.xxx.xcx01.web.service.UserService;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Map;
 
 @Component
 public class JWTAuthenticationTokenFilter extends OncePerRequestFilter {

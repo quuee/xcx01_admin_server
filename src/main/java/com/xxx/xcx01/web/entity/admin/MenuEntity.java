@@ -22,7 +22,7 @@ public class MenuEntity implements GrantedAuthority {
     private String menuName;
 
     /**
-     * 菜单 按钮
+     * 菜单目录 菜单页面 按钮
      */
     @TableField("menu_type")
     private String menuType;

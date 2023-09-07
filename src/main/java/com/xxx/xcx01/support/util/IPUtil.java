@@ -1,8 +1,8 @@
 package com.xxx.xcx01.support.util;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.util.ObjectUtils;
 
-import javax.servlet.http.HttpServletRequest;
 
 public class IPUtil {
     public static String getIp(HttpServletRequest request) {
