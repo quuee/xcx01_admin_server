@@ -22,10 +22,10 @@ public class MenuEntity implements GrantedAuthority {
     private String menuName;
 
     /**
-     * 菜单目录 菜单页面 按钮
+     * 1菜单页面 2菜单目录 3按钮
      */
     @TableField("menu_type")
-    private String menuType;
+    private Integer menuType;
 
     /**
      * 菜单(有无路径)权限、按钮权限
@@ -86,14 +86,13 @@ public class MenuEntity implements GrantedAuthority {
         this.menuName = menuName;
     }
 
-    public String getMenuType() {
+    public Integer getMenuType() {
         return menuType;
     }
 
-    public void setMenuType(String menuType) {
+    public void setMenuType(Integer menuType) {
         this.menuType = menuType;
     }
-
 
     public void setAuthUrl(String authUrl) {
         this.authUrl = authUrl;

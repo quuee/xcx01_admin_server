@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
 
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <!-- 指定日志输出路径 -->
     <property name="LOG_HOME" value="logs" />
 
@@ -13,10 +14,9 @@
 
     <!--输出到控制台-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <!--此日志appender是为开发使用，只配置最低级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
-<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
-<!--            <level>debug</level>-->
-<!--        </filter>-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+        </filter>
         <encoder>
             <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
             <charset>UTF-8</charset>
@@ -44,8 +44,11 @@
         </rollingPolicy>
         <!-- 此日志文档只记录debug级别的 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!--过滤 DEBUG-->
             <level>DEBUG</level>
+            <!--没有匹配到就允许-->
             <onMatch>ACCEPT</onMatch>
+            <!--匹配到就禁止-->
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>

@@ -24,7 +24,7 @@ public class XCXAdminAuthenticationFilter extends AbstractAuthenticationProcessi
 
     private ObjectMapper jsonMapper;
 
-    private static final String defaultFilterProcessesUrl="/user/login";
+    private static final String defaultFilterProcessesUrl="/admin/login";
 
     public XCXAdminAuthenticationFilter() {
         super(defaultFilterProcessesUrl);

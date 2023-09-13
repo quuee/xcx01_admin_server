@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 10067
   context-path: /
 logging:
   config: classpath:logback-spring.xml
