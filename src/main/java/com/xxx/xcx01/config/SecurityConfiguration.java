@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -43,9 +41,9 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
+//        SecurityFilterChain 可能有多个，WebSecurityCustomizer是定义全局的
         return (web) -> web.ignoring()
-                // Spring Security should completely ignore URLs starting with /resources/
-                .requestMatchers("/static/**");
+                .requestMatchers("/static/**","/doc.html","/doc.html#/**","/webjars/**","/favicon.ico","/v3/api-docs/**");
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -54,6 +52,7 @@ public class SecurityConfiguration {
             sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         });
         httpSecurity.authorizeHttpRequests((authorizeRequests)->{
+//            authorizeRequests.requestMatchers("/static/**","/doc.html","/doc.html#/**","/webjars/**","/favicon.ico","/v3/api-docs/**").permitAll();
             authorizeRequests.anyRequest().authenticated();
 
         }).exceptionHandling((exceptionHandling)->{
