@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.xxx.xcx01.web.mapper.admin.UserMapper">
+<mapper namespace="com.xxx.xcx01.web.mapper.admin.AdminMapper">
 
     <resultMap id="userMenuMap" type="com.xxx.xcx01.web.vo.UserRoleMenuVO">
         <id column="id" property="id" />
@@ -31,12 +31,12 @@
             tm.auth_url ,
             tm.pid
         from
-            t_user tu
-        left join t_user_role tur on tu.id = tur.user_id
+            t_admin ta
+        left join t_admin_role tur on ta.id = tur.user_id
         left join t_role tr on tur.role_id = tr.id
         left join t_role_menu trm on tr.id = trm.role_id
         left join t_menu tm on trm.menu_id = tm.id
-        where tu.id = #{userId}
+        where ta.id = #{userId}
     </select>
 
 

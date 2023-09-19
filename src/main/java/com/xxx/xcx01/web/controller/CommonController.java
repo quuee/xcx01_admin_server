@@ -45,7 +45,6 @@ public class CommonController {
             return Result.error("无法读取图片");
         }
 
-
         String originalFilename = multipartFile.getOriginalFilename();
         originalFilename = Objects.requireNonNull(originalFilename).toLowerCase();
 
@@ -61,6 +60,6 @@ public class CommonController {
         File file = new File(localDir+"/"+format+suffix);
         multipartFile.transferTo(file);
 
-        return Result.ok(file.getPath());
+        return Result.ok("/images/"+format+suffix);
     }
 }

@@ -1,6 +1,6 @@
 package com.xxx.xcx01.support.authentication;
 
-import com.xxx.xcx01.web.service.UserService;
+import com.xxx.xcx01.web.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -18,7 +18,7 @@ public class XCXAdminAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     @Qualifier("userServiceImpl")
-    private UserService userService;
+    private AdminService userService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

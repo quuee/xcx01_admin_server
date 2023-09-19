@@ -6,7 +6,7 @@ import com.nimbusds.jose.shaded.gson.internal.LinkedTreeMap;
 import com.xxx.xcx01.support.exception.ErrorCode;
 import com.xxx.xcx01.support.exception.ServerException;
 import com.xxx.xcx01.support.util.JWTUtil;
-import com.xxx.xcx01.web.service.UserService;
+import com.xxx.xcx01.web.service.AdminService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ public class JWTAuthenticationTokenFilter extends OncePerRequestFilter {
     private static final Logger logger = LoggerFactory.getLogger(JWTAuthenticationTokenFilter.class);
 
     @Autowired
-    private UserService userService;
+    private AdminService userService;
 
     @Autowired
     private ObjectMapper jsonMapper;

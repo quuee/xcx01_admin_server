@@ -1,6 +1,6 @@
 package com.xxx.xcx01.convert;
 
-import com.xxx.xcx01.web.entity.admin.UserEntity;
+import com.xxx.xcx01.web.entity.admin.AdminEntity;
 import com.xxx.xcx01.web.params.UserParam;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,5 +18,5 @@ public interface UserConvert {
             @Mapping(source = "phone",target = "phone"),
             @Mapping(source = "email",target = "email"),
     })
-    UserEntity convertToEntity(UserParam param);
+    AdminEntity convertToEntity(UserParam param);
 }

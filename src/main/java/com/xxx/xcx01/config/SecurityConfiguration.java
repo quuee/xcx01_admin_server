@@ -43,7 +43,7 @@ public class SecurityConfiguration {
     public WebSecurityCustomizer webSecurityCustomizer() {
 //        SecurityFilterChain 可能有多个，WebSecurityCustomizer是定义全局的
         return (web) -> web.ignoring()
-                .requestMatchers("/static/**","/doc.html","/doc.html#/**","/webjars/**","/favicon.ico","/v3/api-docs/**");
+                .requestMatchers("/static/**","/images/**","/doc.html","/doc.html#/**","/webjars/**","/favicon.ico","/v3/api-docs/**");
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -52,7 +52,7 @@ public class SecurityConfiguration {
             sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         });
         httpSecurity.authorizeHttpRequests((authorizeRequests)->{
-//            authorizeRequests.requestMatchers("/static/**","/doc.html","/doc.html#/**","/webjars/**","/favicon.ico","/v3/api-docs/**").permitAll();
+//            authorizeRequests.requestMatchers("/static/**","/images/**","/doc.html","/doc.html#/**","/webjars/**","/favicon.ico","/v3/api-docs/**").permitAll();
             authorizeRequests.anyRequest().authenticated();
 
         }).exceptionHandling((exceptionHandling)->{

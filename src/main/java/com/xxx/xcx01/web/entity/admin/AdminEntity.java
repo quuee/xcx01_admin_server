@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
 
-@TableName("t_user")
-public class UserEntity {
+@TableName("t_admin")
+public class AdminEntity {
 
     @TableId(value = "id",type = IdType.AUTO)
     private Long id;

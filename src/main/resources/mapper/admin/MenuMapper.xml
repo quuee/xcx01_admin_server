@@ -37,12 +37,12 @@
             tm.sort,
             tm.icon
         from
-            t_user tu
-        left join t_user_role tur on tu.id = tur.user_id
+            t_admin ta
+        left join t_admin_role tur on ta.id = tur.user_id
         left join t_role tr on tur.role_id = tr.id
         left join t_role_menu trm on tr.id = trm.role_id
         left join t_menu tm on trm.menu_id = tm.id
-        where tu.id = #{userId}
+        where ta.id = #{userId}
     </select>
 
 

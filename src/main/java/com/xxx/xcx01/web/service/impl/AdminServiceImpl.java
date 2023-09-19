@@ -3,16 +3,15 @@ package com.xxx.xcx01.web.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xxx.xcx01.support.authentication.AdminDetails;
+import com.xxx.xcx01.web.entity.admin.AdminEntity;
 import com.xxx.xcx01.web.entity.admin.MenuEntity;
-import com.xxx.xcx01.web.entity.admin.UserEntity;
 import com.xxx.xcx01.web.mapper.admin.MenuMapper;
-import com.xxx.xcx01.web.mapper.admin.RoleMapper;
-import com.xxx.xcx01.web.mapper.admin.UserMapper;
+import com.xxx.xcx01.web.mapper.admin.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.xxx.xcx01.web.service.UserService;
+import com.xxx.xcx01.web.service.AdminService;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 
 
 @Service("userServiceImpl")
-public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
+public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminEntity> implements AdminService {
 
     @Autowired
     private MenuMapper menuMapper;
@@ -30,8 +29,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     @Override
     public AdminDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        LambdaQueryWrapper<UserEntity> eq = new LambdaQueryWrapper<UserEntity>().eq(UserEntity::getUsername, username);
-        UserEntity userEntity = baseMapper.selectOne(eq);
+        LambdaQueryWrapper<AdminEntity> eq = new LambdaQueryWrapper<AdminEntity>().eq(AdminEntity::getUsername, username);
+        AdminEntity userEntity = baseMapper.selectOne(eq);
 
         if(ObjectUtils.isEmpty(userEntity)){
             throw new UsernameNotFoundException("can not found username: "+username);

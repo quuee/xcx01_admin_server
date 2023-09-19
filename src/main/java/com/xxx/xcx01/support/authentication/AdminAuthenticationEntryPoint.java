@@ -29,7 +29,7 @@ public class AdminAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         Map<String, Object> resMap = new HashMap<>();
-        resMap.put("msg", "unAuthentication");
+        resMap.put("msg", "unAuthentication 未登录");
         resMap.put("code", 401);
 
         String res = jsonMapper.writeValueAsString(resMap);
