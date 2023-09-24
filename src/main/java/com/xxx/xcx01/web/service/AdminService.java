@@ -8,5 +8,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface AdminService extends IService<AdminEntity>, UserDetailsService {
 
-    AdminDetails loadUserByUsername(String username);
+    AdminDetails loadUserByUsername(String adminName);
 }

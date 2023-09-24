@@ -29,8 +29,8 @@ public class AdminAuthenticationSuccessHandler implements AuthenticationSuccessH
 
 
         PayloadDTO payloadDTO = new PayloadDTO();
-        payloadDTO.setUserId(adminAuthenticationToken.getId());
-        payloadDTO.setUsername(adminAuthenticationToken.getUsername());
+        payloadDTO.setAdminId(adminAuthenticationToken.getId());
+        payloadDTO.setAdminName(adminAuthenticationToken.getAdminName());
         payloadDTO.setSub("xcx");
         payloadDTO.setIat(new Date().getTime());
 

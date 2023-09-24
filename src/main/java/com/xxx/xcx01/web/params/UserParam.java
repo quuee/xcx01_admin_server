@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class UserParam {
 
-    private Long userId;
+    private Long aid;
 
-    private String username;
+    private String adminName;
 
     private String password;
 
@@ -20,20 +20,20 @@ public class UserParam {
 
     private Date createTime;
 
-    public Long getUserId() {
-        return userId;
+    public Long getAid() {
+        return aid;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setAid(Long aid) {
+        this.aid = aid;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
     public String getPassword() {

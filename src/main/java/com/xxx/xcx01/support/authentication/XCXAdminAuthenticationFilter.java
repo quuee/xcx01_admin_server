@@ -42,10 +42,10 @@ public class XCXAdminAuthenticationFilter extends AbstractAuthenticationProcessi
 
 
         JsonNode params = getParams(request);
-        JsonNode username = params.get("username");
+        JsonNode username = params.get("adminName");
         JsonNode password = params.get("password");
         if(ObjectUtils.isEmpty(username) || ObjectUtils.isEmpty(password)){
-            throw new MissingServletRequestParameterException("username || password","String");
+            throw new MissingServletRequestParameterException("adminName || password","String");
         }
 
         XCXAdminAuthenticationToken adminAuthenticationToken = new XCXAdminAuthenticationToken(username.asText(), password.asText());

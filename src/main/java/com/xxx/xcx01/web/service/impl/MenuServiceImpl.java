@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuEntity> implements MenuService {
 
     @Override
-    public List<MenuEntity> treeMenu(Long userId) {
-        List<MenuEntity> menuEntities = baseMapper.selectMenuByUserId(userId);
+    public List<MenuEntity> treeMenu(Long adminId) {
+        List<MenuEntity> menuEntities = baseMapper.selectMenuByAdminId(adminId);
 
         Map<Long, List<MenuEntity>> groupMap = menuEntities.stream().collect(Collectors.groupingBy(MenuEntity::getPid));
 

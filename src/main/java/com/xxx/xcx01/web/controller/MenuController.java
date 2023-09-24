@@ -21,8 +21,8 @@ public class MenuController {
 
     @SysLog(operation = "查询菜单")
     @RequestMapping(value = "tree",method = RequestMethod.GET)
-    public Result<List<MenuEntity>> treeMenu(@RequestParam Long userId){
-        List<MenuEntity> tree = menuService.treeMenu(userId);
+    public Result<List<MenuEntity>> treeMenu(@RequestParam Long adminId){
+        List<MenuEntity> tree = menuService.treeMenu(adminId);
         return Result.ok(tree);
     }
 }

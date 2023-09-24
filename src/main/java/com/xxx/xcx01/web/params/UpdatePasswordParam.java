@@ -2,18 +2,18 @@ package com.xxx.xcx01.web.params;
 
 public class UpdatePasswordParam {
 
-    private Long userId;
+    private Long aid;
 
     private String oldPassword;
 
     private String newPassword;
 
-    public Long getUserId() {
-        return userId;
+    public Long getAid() {
+        return aid;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setAid(Long aid) {
+        this.aid = aid;
     }
 
     public String getOldPassword() {

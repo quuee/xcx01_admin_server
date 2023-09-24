@@ -7,11 +7,11 @@ import java.util.Date;
 @TableName("t_admin")
 public class AdminEntity {
 
-    @TableId(value = "id",type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "aid",type = IdType.AUTO)
+    private Long aid;
 
-    @TableField("username")
-    private String username;
+    @TableField("admin_name")
+    private String adminName;
 
     @TableField(value = "password")
     private String password;
@@ -28,20 +28,20 @@ public class AdminEntity {
     @TableField("create_time")
     private Date createTime;
 
-    public Long getId() {
-        return id;
+    public Long getAid() {
+        return aid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAid(Long aid) {
+        this.aid = aid;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
     public String getPassword() {

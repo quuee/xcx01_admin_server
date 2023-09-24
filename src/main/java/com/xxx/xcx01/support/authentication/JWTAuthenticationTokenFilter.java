@@ -62,11 +62,11 @@ public class JWTAuthenticationTokenFilter extends OncePerRequestFilter {
             }
 
             if(!ObjectUtils.isEmpty(payload)){
-                String username = (String) payload.get("username");
+                String adminName = (String) payload.get("adminName");
 //                PayloadDTO payloadDTO = jsonMapper.readValue(string, PayloadDTO.class);
-                AdminDetails adminDetails = userService.loadUserByUsername(username);
+                AdminDetails adminDetails = userService.loadUserByUsername(adminName);
                 XCXAdminAuthenticationToken adminAuthenticationToken = new XCXAdminAuthenticationToken(
-                        adminDetails.getId(),
+                        adminDetails.getAid(),
                         adminDetails.getUsername(),
                         "",
                         adminDetails.getAvatarUrl(),

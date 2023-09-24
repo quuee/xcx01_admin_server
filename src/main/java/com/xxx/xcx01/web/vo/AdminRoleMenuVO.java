@@ -1,10 +1,10 @@
 package com.xxx.xcx01.web.vo;
 
-public class UserRoleMenuVO {
+public class AdminRoleMenuVO {
 
-    private Long id;
+    private Long aid;
 
-    private String username;
+    private String adminName;
 
     private Long roleId;
 
@@ -20,20 +20,20 @@ public class UserRoleMenuVO {
 
     private Long pid;
 
-    public Long getId() {
-        return id;
+    public Long getAid() {
+        return aid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAid(Long aid) {
+        this.aid = aid;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
     public Long getRoleId() {

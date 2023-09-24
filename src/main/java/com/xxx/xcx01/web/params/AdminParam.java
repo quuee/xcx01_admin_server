@@ -2,7 +2,7 @@ package com.xxx.xcx01.web.params;
 
 public class AdminParam {
 
-    private String username;
+    private String adminName;
 
     private String phone;
 
@@ -12,12 +12,12 @@ public class AdminParam {
 
     private Integer pageSize;
 
-    public String getUsername() {
-        return username;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
     public String getPhone() {

@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 
 public class AdminDetails implements UserDetails {
 
-    private Long id;
+    private Long aid;
 
-    private String username;
+    private String adminName;
 
     private String password;
 
@@ -25,16 +25,16 @@ public class AdminDetails implements UserDetails {
     public AdminDetails() {
     }
 
-    public AdminDetails(Long id, String username, String password, String avatarUrl) {
-        this.id = id;
-        this.username = username;
+    public AdminDetails(Long aid, String adminName, String password, String avatarUrl) {
+        this.aid = aid;
+        this.adminName = adminName;
         this.password = password;
         this.avatarUrl = avatarUrl;
     }
 
-    public AdminDetails(Long id, String username, String password, String avatarUrl, List<MenuEntity> menuEntities) {
-        this.id = id;
-        this.username = username;
+    public AdminDetails(Long aid, String adminName, String password, String avatarUrl, List<MenuEntity> menuEntities) {
+        this.aid = aid;
+        this.adminName = adminName;
         this.password = password;
         this.avatarUrl = avatarUrl;
         this.menuEntities = menuEntities;
@@ -48,12 +48,24 @@ public class AdminDetails implements UserDetails {
         return menuEntities.stream().map(MenuEntity::getAuthority).map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
     }
 
-    public Long getId() {
-        return id;
+    public Long getAid() {
+        return aid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAid(Long aid) {
+        this.aid = aid;
+    }
+
+    public String getAdminName() {
+        return adminName;
+    }
+
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
+
+    public List<MenuEntity> getMenuEntities() {
+        return menuEntities;
     }
 
     public String getAvatarUrl() {
@@ -66,17 +78,13 @@ public class AdminDetails implements UserDetails {
 
 
     @Override
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public String getPassword() {
+        return password;
     }
 
     @Override
-    public String getPassword() {
-        return password;
+    public String getUsername() {
+        return this.adminName;
     }
 
     public void setPassword(String password) {

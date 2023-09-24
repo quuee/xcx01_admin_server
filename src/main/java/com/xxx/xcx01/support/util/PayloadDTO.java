@@ -9,9 +9,9 @@ public class PayloadDTO {
     private Long iat;
     //过期时间 时间戳
 
-    private Long userId;
+    private Long adminId;
 
-    private String username;
+    private String adminName;
 
 
     public String getSub() {
@@ -30,19 +30,19 @@ public class PayloadDTO {
         this.iat = iat;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getAdminId() {
+        return adminId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setAdminId(Long adminId) {
+        this.adminId = adminId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 }

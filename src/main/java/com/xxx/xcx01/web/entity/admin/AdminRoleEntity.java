@@ -6,14 +6,15 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("t_admin_role")
-public class UserRoleEntity {
+public class AdminRoleEntity {
 
     @TableId(value = "id",type = IdType.AUTO)
     private Long id;
 
-    @TableField("user_id")
-    private Long userId;
+    @TableField("admin_id")
+    private Long adminId;
 
     @TableField("role_id")
     private Long roleId;
+
 }

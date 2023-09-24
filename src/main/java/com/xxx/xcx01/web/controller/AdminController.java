@@ -46,28 +46,37 @@ public class AdminController {
         AdminEntity byId = adminService.getById(userId);
         return Result.ok(byId);
     }
+
+    @Operation(summary = "admin信息")
+    @RequestMapping(value = "infoById",method = RequestMethod.GET)
+    public Result<AdminEntity> info(@RequestParam Long aid){
+
+        AdminEntity byId = adminService.getById(aid);
+        return Result.ok(byId);
+    }
+
     @Operation(summary = "新增或修改用户")
     @PreAuthorize("hasAuthority('permission:admin:saveOrUpdate')")
     @RequestMapping(value = "saveOrUpdate",method = RequestMethod.POST)
     @SysLog(operation = "saveOrUpdate")
     public Result<AdminEntity> saveOrUpdate(@RequestBody UserParam user){
-        AdminEntity userEntity = userConvert.convertToEntity(user);
-        if(userEntity.getId() == null || userEntity.getId() <=0){
+        AdminEntity adminEntity = userConvert.convertToEntity(user);
+        if(adminEntity.getAid() == null || adminEntity.getAid() <=0){
             // 新增
-            String encode = passwordEncoder.encode(userEntity.getPassword());
-            userEntity.setPassword(encode);
-            userEntity.setCreateTime(new Date());
-            adminService.save(userEntity);
+            String encode = passwordEncoder.encode(adminEntity.getPassword());
+            adminEntity.setPassword(encode);
+            adminEntity.setCreateTime(new Date());
+            adminService.save(adminEntity);
         }else{
-            adminService.updateById(userEntity);
+            adminService.updateById(adminEntity);
         }
-        return Result.ok(userEntity);
+        return Result.ok(adminEntity);
     }
     @Operation(summary = "修改密码")
     @RequestMapping(value = "updatePassword",method = RequestMethod.PUT)
     public Result updatePassword(@RequestBody UpdatePasswordParam updatePasswordParam){
 
-        AdminEntity byId = adminService.getById(updatePasswordParam.getUserId());
+        AdminEntity byId = adminService.getById(updatePasswordParam.getAid());
 
         boolean matches = passwordEncoder.matches(updatePasswordParam.getOldPassword(), byId.getPassword());
         if(!matches){
@@ -97,7 +106,7 @@ public class AdminController {
     public Result<PageResult<AdminEntity>> pageList(AdminParam adminParam){
         Page<AdminEntity> userEntityPage = new Page<>(adminParam.getPageNo(), adminParam.getPageSize());
         LambdaQueryWrapper<AdminEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.like(!ObjectUtils.isEmpty(adminParam.getUsername()),AdminEntity::getUsername,adminParam.getUsername());
+        wrapper.like(!ObjectUtils.isEmpty(adminParam.getAdminName()),AdminEntity::getAdminName,adminParam.getAdminName());
         wrapper.like(!ObjectUtils.isEmpty(adminParam.getPhone()),AdminEntity::getPhone,adminParam.getPhone());
         wrapper.like(!ObjectUtils.isEmpty(adminParam.getEmail()),AdminEntity::getEmail,adminParam.getEmail());
         Page<AdminEntity> page = adminService.page(userEntityPage, wrapper);

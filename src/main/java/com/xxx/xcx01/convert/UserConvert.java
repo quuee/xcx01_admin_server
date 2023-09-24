@@ -11,8 +11,8 @@ public interface UserConvert {
 
 
     @Mappings({
-            @Mapping(source = "userId",target = "id"),
-            @Mapping(source = "username",target = "username"),
+            @Mapping(source = "aid",target = "aid"),
+            @Mapping(source = "adminName",target = "adminName"),
             @Mapping(source = "password",target = "password"),
             @Mapping(source = "avatarUrl",target = "avatarUrl"),
             @Mapping(source = "phone",target = "phone"),

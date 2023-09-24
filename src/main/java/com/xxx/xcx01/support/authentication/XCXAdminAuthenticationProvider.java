@@ -27,7 +27,7 @@ public class XCXAdminAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         XCXAdminAuthenticationToken authenticationToken = (XCXAdminAuthenticationToken)authentication;
 
-        AdminDetails adminDetails = userService.loadUserByUsername(authenticationToken.getUsername());
+        AdminDetails adminDetails = userService.loadUserByUsername(authenticationToken.getAdminName());
 
 //        String encode = passwordEncoder.encode("123456");
 //        System.out.println(encode);
@@ -38,7 +38,7 @@ public class XCXAdminAuthenticationProvider implements AuthenticationProvider {
         }
 
         XCXAdminAuthenticationToken adminAuthenticationToken = new XCXAdminAuthenticationToken(
-                adminDetails.getId(),
+                adminDetails.getAid(),
                 adminDetails.getUsername(),
                 "",
                 adminDetails.getAvatarUrl(),

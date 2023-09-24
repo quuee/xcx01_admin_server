@@ -9,7 +9,7 @@ public class XCXAdminAuthenticationToken extends AbstractAuthenticationToken {
 
     private Long id;
 
-    private String username;
+    private String adminName;
 
     private String password;
 
@@ -17,12 +17,12 @@ public class XCXAdminAuthenticationToken extends AbstractAuthenticationToken {
 
     /**
      * 生成未认证的AuthenticationToken
-     * @param username
+     * @param adminName
      * @param password
      */
-    public XCXAdminAuthenticationToken(String username,String password) {
+    public XCXAdminAuthenticationToken(String adminName,String password) {
         super(null);
-        this.username=username;
+        this.adminName=adminName;
         this.password=password;
         super.setAuthenticated(false);
     }
@@ -30,15 +30,15 @@ public class XCXAdminAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 生成已认证的AuthenticationToken
      * @param id
-     * @param username
+     * @param adminName
      * @param password
      * @param avatarUrl
      * @param authorities
      */
-    public XCXAdminAuthenticationToken(Long id, String username, String password, String avatarUrl, Collection<? extends GrantedAuthority> authorities) {
+    public XCXAdminAuthenticationToken(Long id, String adminName, String password, String avatarUrl, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.id=id;
-        this.username=username;
+        this.adminName=adminName;
         this.password=password;
         this.avatarUrl=avatarUrl;
         super.setAuthenticated(true);
@@ -52,15 +52,15 @@ public class XCXAdminAuthenticationToken extends AbstractAuthenticationToken {
 
     @Override
     public Object getPrincipal() {
-        return this.username;
+        return this.adminName;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAdminName() {
+        return adminName;
     }
 
     public String getPassword() {

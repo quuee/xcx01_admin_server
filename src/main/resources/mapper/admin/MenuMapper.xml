@@ -3,17 +3,6 @@
 
 <mapper namespace="com.xxx.xcx01.web.mapper.admin.MenuMapper">
 
-    <resultMap id="userRoleMenuMap" type="com.xxx.xcx01.web.vo.UserRoleMenuVO">
-        <id column="id" property="id" />
-        <result column="username" property="username"/>
-        <result column="role_id" property="roleId"/>
-        <result column="role_name" property="roleName"/>
-        <result column="menu_id" property="menuId"/>
-        <result column="menu_name" property="menuName"/>
-        <result column="menu_type" property="menuType"/>
-        <result column="auth_url" property="authUrl"/>
-        <result column="pid" property="pid"/>
-    </resultMap>
 
     <resultMap id="menuMap" type="com.xxx.xcx01.web.entity.admin.MenuEntity">
         <id column="id" property="id" />
@@ -26,7 +15,7 @@
         <result column="icon" property="icon"/>
     </resultMap>
 
-    <select id="selectMenuByUserId" resultMap="menuMap">
+    <select id="selectMenuByAdminId" resultMap="menuMap">
         SELECT
             tm.id ,
             tm.menu_name ,
@@ -38,11 +27,11 @@
             tm.icon
         from
             t_admin ta
-        left join t_admin_role tur on ta.id = tur.user_id
+        left join t_admin_role tur on ta.aid = tur.admin_id
         left join t_role tr on tur.role_id = tr.id
         left join t_role_menu trm on tr.id = trm.role_id
         left join t_menu tm on trm.menu_id = tm.id
-        where ta.id = #{userId}
+        where ta.aid = #{adminId}
     </select>
 
 
